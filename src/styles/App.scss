@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../fonts/icons/iconfont.eot');
+  src: url('../fonts/icons/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/icons/iconfont.woff') format('woff'),
+  url('../fonts/icons/iconfont.ttf') format('truetype'),
+  url('../fonts/icons/iconfont.svg#iconfont') format('svg');
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -20,7 +29,72 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #ddd
+  background-color: #ddd;
+  perspective: 1800px;
+
+  @at-root {
+    .image-figure {
+      position: absolute;
+      width: 320px;
+      height: 360px;
+
+      margin: 0;
+      padding: 40px;
+      background-color: #fff;
+
+      box-sizing: border-box;
+      cursor: pointer;
+      transform-origin: 0 50% 0;
+      transform-style: preserve-3d;
+      transition: all .6s ease-in-out;
+
+      img {
+        width: 240px;
+        height: 240px;
+      }
+
+      &.is-inverse {
+        transform: translate(320px) rotateY(180deg);
+      }
+    }
+
+    figcaption {
+      text-align: center;
+
+      .image-title {
+        margin: 20px 0 0 0;
+
+        color: #a7a0a2;
+        font-size: 16px;
+      }
+
+      .image-back {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+        padding: 50px 40px;
+        overflow: auto;
+
+        color: #a7a0a2;
+        font-size: 22px;
+        line-height: 1.24;
+        text-align: left;
+
+        background-color: #fff;
+
+        box-sizing: border-box;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
 }
 
 .controller-nav {
@@ -32,4 +106,44 @@ html, body {
   width: 100%;
 
   text-align: center;
+
+  @at-root {
+    .controller-unit {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+      vertical-align: middle;
+
+      text-align: center;
+      cursor: pointer;
+      background-color: #aaa;
+      border-radius: 50%;
+
+      transform: scale(.5);
+      transition: all .6s ease-in-out;
+
+      &.is-center {
+        background-color: #888;
+        transform: scale(1);
+
+        &::after {
+          color: #fff;
+          line-height: 30px;
+          font-family: 'iconfont';
+
+          content: '\e64c';
+
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-smoothing: grayscale;
+
+        }
+
+        &.is-inverse {
+          background-color: #555;
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
 }
