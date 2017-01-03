@@ -53,7 +53,7 @@ class ImageFigure extends React.Component {
 
     // 如果图片的旋转角度有值并且不为0，添加旋转角度
     if (this.props.arrange.rotate) {
-      ['MozTransform', 'msTransform', 'WebkitTransform', 'taansform'].forEach((value) => {
+      ['MozTransform', 'msTransform', 'WebkitTransform', 'transform'].forEach((value) => {
         styleObj[value] = 'rotate(' + this.props.arrange.rotate + 'deg)';
       })
     }
@@ -299,7 +299,7 @@ class GalleryApp extends React.Component {
         inverse={this.inverse(index)} center={this.center(index)} />);
 
       controllerUnits.push(<ControllerUnit arrange={this.state.imagesArrangeArr[index]}
-        inverse={this.inverse(index)} center={this.center(index)}/>);
+        key={index} inverse={this.inverse(index)} center={this.center(index)}/>);
 
     })
 
